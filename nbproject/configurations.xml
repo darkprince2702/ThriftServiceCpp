@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>Buffer.h</itemPath>
+      <itemPath>Cache.h</itemPath>
+      <itemPath>Database.h</itemPath>
+      <itemPath>HashMap.h</itemPath>
+      <itemPath>HashMapModel.h</itemPath>
+      <itemPath>LevelDB.h</itemPath>
+      <itemPath>LevelDBModel.h</itemPath>
+      <itemPath>Memcached.h</itemPath>
+      <itemPath>MemcachedModel.h</itemPath>
+      <itemPath>ProfileService.h</itemPath>
+      <itemPath>ProfileServiceConstants.h</itemPath>
+      <itemPath>ProfileServiceTypes.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Buffer.cpp</itemPath>
+      <itemPath>Cache.cpp</itemPath>
+      <itemPath>Database.cpp</itemPath>
+      <itemPath>HashMap.cpp</itemPath>
+      <itemPath>HashMapModel.cpp</itemPath>
+      <itemPath>LevelDB.cpp</itemPath>
+      <itemPath>LevelDBModel.cpp</itemPath>
+      <itemPath>Memcached.cpp</itemPath>
+      <itemPath>MemcachedModel.cpp</itemPath>
+      <itemPath>ProfileService.cpp</itemPath>
+      <itemPath>ProfileServiceConstants.cpp</itemPath>
+      <itemPath>ProfileServiceServer.cpp</itemPath>
+      <itemPath>ProfileServiceTypes.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>thrift</linkerLibLibItem>
+            <linkerLibLibItem>thriftnb</linkerLibLibItem>
+            <linkerLibLibItem>event</linkerLibLibItem>
+            <linkerLibLibItem>pthread</linkerLibLibItem>
+            <linkerLibLibItem>memcached</linkerLibLibItem>
+            <linkerLibLibItem>leveldb</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="Buffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Cache.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Cache.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Database.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Database.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="HashMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashMapModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="HashMapModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LevelDB.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LevelDB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LevelDBModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LevelDBModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Memcached.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Memcached.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MemcachedModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MemcachedModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileService.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileService.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileServiceConstants.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceConstants.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileServiceServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceTypes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Buffer.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Cache.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Cache.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Database.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Database.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashMap.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HashMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HashMapModel.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HashMapModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LevelDB.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="LevelDB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LevelDBModel.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="LevelDBModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Memcached.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Memcached.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MemcachedModel.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="MemcachedModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileService.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileService.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileServiceConstants.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceConstants.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProfileServiceServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceTypes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ProfileServiceTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
