@@ -11,6 +11,7 @@
 
 class LevelDBModel {
 private:
+    static LevelDBModel *instance;
     leveldb::DB *db;
     leveldb::Options options;
     leveldb::Status status;

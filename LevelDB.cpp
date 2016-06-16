@@ -4,16 +4,13 @@
 
 #include "LevelDB.h"
 
+LevelDB* LevelDB::instance = new LevelDB();
 
 LevelDB::LevelDB() {
     dbModel = LevelDBModel::getInstance();
 }
 
 LevelDB *LevelDB::getInstance() {
-    static LevelDB *instance;
-    if (!instance)
-        instance = new LevelDB;
-
     return instance;
 }
 

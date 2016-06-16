@@ -4,15 +4,14 @@
 
 #include "LevelDBModel.h"
 
+LevelDBModel* LevelDBModel::instance = new LevelDBModel();
+
 LevelDBModel::LevelDBModel() {
     options.create_if_missing = true;
-    status = leveldb::DB::Open(options, "/data/db", &db);
+    status = leveldb::DB::Open(options, "~/database", &db);
 }
 
 LevelDBModel *LevelDBModel::getInstance() {
-    static LevelDBModel *instance;
-    if (!instance)
-        instance = new LevelDBModel();
     return instance;
 }
 

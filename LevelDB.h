@@ -11,6 +11,7 @@
 
 class LevelDB : public Database{
 private:
+    static LevelDB *instance;
     LevelDBModel *dbModel;
     LevelDB();
 public:
