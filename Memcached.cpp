@@ -4,16 +4,15 @@
 
 #include "Memcached.h"
 
+using namespace profileservice;
 
 Memcached::Memcached() {
     memcachedModel = MemcachedModel::getInstance();
 }
 
 Memcached *Memcached::getInstance() {
-    static Memcached *instance;
-    if (!instance)
-        instance = new Memcached();
-    return instance;
+    static Memcached instance;
+    return &instance;
 }
 
 GetResult Memcached::getData(std::string key) {

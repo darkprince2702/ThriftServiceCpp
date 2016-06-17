@@ -4,15 +4,15 @@
 
 #include "HashMap.h"
 
+using namespace profileservice;
+
 HashMap::HashMap() {
     hashMapModel = HashMapModel::getInstance();
 }
 
 HashMap* HashMap::getInstance() {
-    static HashMap *instance;
-    if (!instance)
-        instance = new HashMap();
-    return instance;
+    static HashMap instance;
+    return &instance;
 }
 
 GetResult HashMap::getData(std::string key) {

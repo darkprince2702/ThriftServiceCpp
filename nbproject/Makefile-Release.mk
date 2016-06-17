@@ -38,16 +38,18 @@ OBJECTFILES= \
 	${OBJECTDIR}/Buffer.o \
 	${OBJECTDIR}/Cache.o \
 	${OBJECTDIR}/Database.o \
+	${OBJECTDIR}/DatabaseModel.o \
+	${OBJECTDIR}/DatabaseService.o \
 	${OBJECTDIR}/HashMap.o \
 	${OBJECTDIR}/HashMapModel.o \
-	${OBJECTDIR}/LevelDB.o \
-	${OBJECTDIR}/LevelDBModel.o \
 	${OBJECTDIR}/Memcached.o \
 	${OBJECTDIR}/MemcachedModel.o \
 	${OBJECTDIR}/ProfileService.o \
-	${OBJECTDIR}/ProfileServiceConstants.o \
 	${OBJECTDIR}/ProfileServiceServer.o \
-	${OBJECTDIR}/ProfileServiceTypes.o
+	${OBJECTDIR}/databaseservice_constants.o \
+	${OBJECTDIR}/databaseservice_types.o \
+	${OBJECTDIR}/profileservice_constants.o \
+	${OBJECTDIR}/profileservice_types.o
 
 
 # C Compiler Flags
@@ -89,6 +91,16 @@ ${OBJECTDIR}/Database.o: Database.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Database.o Database.cpp
 
+${OBJECTDIR}/DatabaseModel.o: DatabaseModel.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DatabaseModel.o DatabaseModel.cpp
+
+${OBJECTDIR}/DatabaseService.o: DatabaseService.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DatabaseService.o DatabaseService.cpp
+
 ${OBJECTDIR}/HashMap.o: HashMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -98,16 +110,6 @@ ${OBJECTDIR}/HashMapModel.o: HashMapModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HashMapModel.o HashMapModel.cpp
-
-${OBJECTDIR}/LevelDB.o: LevelDB.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LevelDB.o LevelDB.cpp
-
-${OBJECTDIR}/LevelDBModel.o: LevelDBModel.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LevelDBModel.o LevelDBModel.cpp
 
 ${OBJECTDIR}/Memcached.o: Memcached.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -124,20 +126,30 @@ ${OBJECTDIR}/ProfileService.o: ProfileService.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProfileService.o ProfileService.cpp
 
-${OBJECTDIR}/ProfileServiceConstants.o: ProfileServiceConstants.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProfileServiceConstants.o ProfileServiceConstants.cpp
-
 ${OBJECTDIR}/ProfileServiceServer.o: ProfileServiceServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProfileServiceServer.o ProfileServiceServer.cpp
 
-${OBJECTDIR}/ProfileServiceTypes.o: ProfileServiceTypes.cpp 
+${OBJECTDIR}/databaseservice_constants.o: databaseservice_constants.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProfileServiceTypes.o ProfileServiceTypes.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/databaseservice_constants.o databaseservice_constants.cpp
+
+${OBJECTDIR}/databaseservice_types.o: databaseservice_types.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/databaseservice_types.o databaseservice_types.cpp
+
+${OBJECTDIR}/profileservice_constants.o: profileservice_constants.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/profileservice_constants.o profileservice_constants.cpp
+
+${OBJECTDIR}/profileservice_types.o: profileservice_types.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/profileservice_types.o profileservice_types.cpp
 
 # Subprojects
 .build-subprojects:

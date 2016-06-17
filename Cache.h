@@ -2,18 +2,20 @@
 // Created by ductn on 14/06/2016.
 //
 
-#ifndef THRIFTSERVICECPP_CACHE_H
-#define THRIFTSERVICECPP_CACHE_H
+#ifndef PROFILESERVICE_CACHE_H
+#define PROFILESERVICE_CACHE_H
 
 #include <string>
-#include "ProfileServiceTypes.h"
+#include "profileservice_types.h"
 
-class Cache {
-public:
-    virtual GetResult getData(std::string key) = 0;
-    virtual bool setData(std::string key, std::string value) = 0;
-    virtual bool removeData(std::string key) = 0;
-    static Cache *getCache(std::string cacheType);
-};
+namespace profileservice {
 
-#endif //THRIFTSERVICECPP_CACHE_H
+    class Cache {
+    public:
+        virtual GetResult getData(std::string key) = 0;
+        virtual bool setData(std::string key, std::string value) = 0;
+        virtual bool removeData(std::string key) = 0;
+        static Cache *getCache(std::string cacheType);
+    };
+}
+#endif //CACHE_H

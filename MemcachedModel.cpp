@@ -15,6 +15,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace profileservice;
+
 MemcachedModel::MemcachedModel() {
     mc = memcache::Memcache("localhost", 11211);
     mc.flush();
@@ -22,10 +24,8 @@ MemcachedModel::MemcachedModel() {
 
 
 MemcachedModel *MemcachedModel::getInstance() {
-    static MemcachedModel *instance;
-    if(!instance)
-        instance = new MemcachedModel();
-    return instance;
+    static MemcachedModel instance;
+    return &instance;
 }
 
 
@@ -35,10 +35,10 @@ GetResult MemcachedModel::getData(std::string key) {
     std::lock_guard<std::mutex> guard(mtx);
     bool success = mc.get(key, result);
     if (success) {
-        return_.isNull = false;
-        return_.value = std::string(result.data());
+        return_.__set_isNull(false);
+        return_.__set_value(std::string(result.data()));
     } else {
-        return_.isNull = true;
+        return_.__set_isNull(true);
     }
 
     return return_;

@@ -7,9 +7,9 @@
 #ifndef profileservice_CONSTANTS_H
 #define profileservice_CONSTANTS_H
 
-#include "ProfileServiceTypes.h"
+#include "profileservice_types.h"
 
-
+namespace profileservice {
 
 class profileserviceConstants {
  public:
@@ -19,6 +19,6 @@ class profileserviceConstants {
 
 extern const profileserviceConstants g_profileservice_constants;
 
-
+} // namespace
 
 #endif

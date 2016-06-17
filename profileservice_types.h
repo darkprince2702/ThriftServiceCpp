@@ -17,7 +17,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-
+namespace profileservice {
 
 class GetResult;
 
@@ -74,6 +74,6 @@ inline std::ostream& operator<<(std::ostream& out, const GetResult& obj)
   return out;
 }
 
-
+} // namespace
 
 #endif

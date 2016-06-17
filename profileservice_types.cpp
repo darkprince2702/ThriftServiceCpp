@@ -4,14 +4,14 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "ProfileServiceTypes.h"
+#include "profileservice_types.h"
 
 #include <algorithm>
 #include <ostream>
 
 #include <thrift/TToString.h>
 
-
+namespace profileservice {
 
 
 GetResult::~GetResult() throw() {
@@ -124,4 +124,4 @@ void GetResult::printTo(std::ostream& out) const {
   out << ")";
 }
 
-
+} // namespace

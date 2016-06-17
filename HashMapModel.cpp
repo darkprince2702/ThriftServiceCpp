@@ -4,19 +4,15 @@
 
 #include "HashMapModel.h"
 
+using namespace profileservice;
+
 HashMapModel::HashMapModel() {
 //    hashMap = new std::unordered_map<std::string, std::string>();
 }
 
 HashMapModel *HashMapModel::getInstance() {
-    static HashMapModel *instance = NULL;
-    if (instance == NULL) {
-        lock {
-            
-            instance = new HashMapModel();
-        }
-    }
-    return instance;
+    static HashMapModel instance;
+    return &instance;
 }
 
 GetResult HashMapModel::getData(std::string key) {
@@ -24,8 +20,8 @@ GetResult HashMapModel::getData(std::string key) {
     std::lock_guard<std::mutex> guard(mutex);
     auto search = hashMap.find(key);
     if (search != hashMap.end()) {
-        return_.isNull =     false;
-        return_.value = search->second;
+        return_.__set_isNull(false);
+        return_.__set_value(search->second);
     } else {
         return_.isNull = true;
     }
@@ -34,20 +30,13 @@ GetResult HashMapModel::getData(std::string key) {
 
 bool HashMapModel::setData(std::string key, std::string value) {
     std::lock_guard<std::mutex> guard(mutex);
-    auto search = hashMap.find(key);
-    // If data exist in memory, update it if value changed
-    if (search != hashMap.end() && search->second != value)
-        hashMap[key] = value;
-    else {
-        hashMap[key] = value;
-    }
+    hashMap[key] = value;
+    return true;
 }
 
 bool HashMapModel::removeData(std::string key) {
     std::lock_guard<std::mutex> guard(mutex);
-    auto search = hashMap.find(key);
-    // If data exist in memory, delete it
-    if (search != hashMap.end())
-        hashMap.erase(key);
+    hashMap.erase(key);
+    return true;
 }
 

@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "ProfileService.h"
+#include "DatabaseService.h"
 
-namespace profileservice {
+namespace databaseservice {
 
 
-ProfileService_getData_args::~ProfileService_getData_args() throw() {
+DatabaseService_hasData_args::~DatabaseService_hasData_args() throw() {
 }
 
 
-uint32_t ProfileService_getData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_hasData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -54,10 +54,10 @@ uint32_t ProfileService_getData_args::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t ProfileService_getData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_hasData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_getData_args");
+  xfer += oprot->writeStructBegin("DatabaseService_hasData_args");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->key);
@@ -69,14 +69,14 @@ uint32_t ProfileService_getData_args::write(::apache::thrift::protocol::TProtoco
 }
 
 
-ProfileService_getData_pargs::~ProfileService_getData_pargs() throw() {
+DatabaseService_hasData_pargs::~DatabaseService_hasData_pargs() throw() {
 }
 
 
-uint32_t ProfileService_getData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_hasData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_getData_pargs");
+  xfer += oprot->writeStructBegin("DatabaseService_hasData_pargs");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->key)));
@@ -88,11 +88,198 @@ uint32_t ProfileService_getData_pargs::write(::apache::thrift::protocol::TProtoc
 }
 
 
-ProfileService_getData_result::~ProfileService_getData_result() throw() {
+DatabaseService_hasData_result::~DatabaseService_hasData_result() throw() {
 }
 
 
-uint32_t ProfileService_getData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_hasData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->success);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DatabaseService_hasData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("DatabaseService_hasData_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
+    xfer += oprot->writeBool(this->success);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+DatabaseService_hasData_presult::~DatabaseService_hasData_presult() throw() {
+}
+
+
+uint32_t DatabaseService_hasData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool((*(this->success)));
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+DatabaseService_getData_args::~DatabaseService_getData_args() throw() {
+}
+
+
+uint32_t DatabaseService_getData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->key);
+          this->__isset.key = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DatabaseService_getData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DatabaseService_getData_args");
+
+  xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->key);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+DatabaseService_getData_pargs::~DatabaseService_getData_pargs() throw() {
+}
+
+
+uint32_t DatabaseService_getData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DatabaseService_getData_pargs");
+
+  xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString((*(this->key)));
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+DatabaseService_getData_result::~DatabaseService_getData_result() throw() {
+}
+
+
+uint32_t DatabaseService_getData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -133,11 +320,11 @@ uint32_t ProfileService_getData_result::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t ProfileService_getData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_getData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ProfileService_getData_result");
+  xfer += oprot->writeStructBegin("DatabaseService_getData_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -150,11 +337,11 @@ uint32_t ProfileService_getData_result::write(::apache::thrift::protocol::TProto
 }
 
 
-ProfileService_getData_presult::~ProfileService_getData_presult() throw() {
+DatabaseService_getData_presult::~DatabaseService_getData_presult() throw() {
 }
 
 
-uint32_t ProfileService_getData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_getData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -196,11 +383,11 @@ uint32_t ProfileService_getData_presult::read(::apache::thrift::protocol::TProto
 }
 
 
-ProfileService_setData_args::~ProfileService_setData_args() throw() {
+DatabaseService_setData_args::~DatabaseService_setData_args() throw() {
 }
 
 
-uint32_t ProfileService_setData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_setData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -249,10 +436,10 @@ uint32_t ProfileService_setData_args::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t ProfileService_setData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_setData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_setData_args");
+  xfer += oprot->writeStructBegin("DatabaseService_setData_args");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->key);
@@ -268,14 +455,14 @@ uint32_t ProfileService_setData_args::write(::apache::thrift::protocol::TProtoco
 }
 
 
-ProfileService_setData_pargs::~ProfileService_setData_pargs() throw() {
+DatabaseService_setData_pargs::~DatabaseService_setData_pargs() throw() {
 }
 
 
-uint32_t ProfileService_setData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_setData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_setData_pargs");
+  xfer += oprot->writeStructBegin("DatabaseService_setData_pargs");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->key)));
@@ -291,11 +478,11 @@ uint32_t ProfileService_setData_pargs::write(::apache::thrift::protocol::TProtoc
 }
 
 
-ProfileService_setData_result::~ProfileService_setData_result() throw() {
+DatabaseService_setData_result::~DatabaseService_setData_result() throw() {
 }
 
 
-uint32_t ProfileService_setData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_setData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -336,11 +523,11 @@ uint32_t ProfileService_setData_result::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t ProfileService_setData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_setData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ProfileService_setData_result");
+  xfer += oprot->writeStructBegin("DatabaseService_setData_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
@@ -353,11 +540,11 @@ uint32_t ProfileService_setData_result::write(::apache::thrift::protocol::TProto
 }
 
 
-ProfileService_setData_presult::~ProfileService_setData_presult() throw() {
+DatabaseService_setData_presult::~DatabaseService_setData_presult() throw() {
 }
 
 
-uint32_t ProfileService_setData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_setData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -399,11 +586,11 @@ uint32_t ProfileService_setData_presult::read(::apache::thrift::protocol::TProto
 }
 
 
-ProfileService_removeData_args::~ProfileService_removeData_args() throw() {
+DatabaseService_removeData_args::~DatabaseService_removeData_args() throw() {
 }
 
 
-uint32_t ProfileService_removeData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_removeData_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -444,10 +631,10 @@ uint32_t ProfileService_removeData_args::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t ProfileService_removeData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_removeData_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_removeData_args");
+  xfer += oprot->writeStructBegin("DatabaseService_removeData_args");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->key);
@@ -459,14 +646,14 @@ uint32_t ProfileService_removeData_args::write(::apache::thrift::protocol::TProt
 }
 
 
-ProfileService_removeData_pargs::~ProfileService_removeData_pargs() throw() {
+DatabaseService_removeData_pargs::~DatabaseService_removeData_pargs() throw() {
 }
 
 
-uint32_t ProfileService_removeData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_removeData_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ProfileService_removeData_pargs");
+  xfer += oprot->writeStructBegin("DatabaseService_removeData_pargs");
 
   xfer += oprot->writeFieldBegin("key", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->key)));
@@ -478,11 +665,11 @@ uint32_t ProfileService_removeData_pargs::write(::apache::thrift::protocol::TPro
 }
 
 
-ProfileService_removeData_result::~ProfileService_removeData_result() throw() {
+DatabaseService_removeData_result::~DatabaseService_removeData_result() throw() {
 }
 
 
-uint32_t ProfileService_removeData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_removeData_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -523,11 +710,11 @@ uint32_t ProfileService_removeData_result::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t ProfileService_removeData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t DatabaseService_removeData_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ProfileService_removeData_result");
+  xfer += oprot->writeStructBegin("DatabaseService_removeData_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_BOOL, 0);
@@ -540,11 +727,11 @@ uint32_t ProfileService_removeData_result::write(::apache::thrift::protocol::TPr
 }
 
 
-ProfileService_removeData_presult::~ProfileService_removeData_presult() throw() {
+DatabaseService_removeData_presult::~DatabaseService_removeData_presult() throw() {
 }
 
 
-uint32_t ProfileService_removeData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t DatabaseService_removeData_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -585,18 +772,18 @@ uint32_t ProfileService_removeData_presult::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-void ProfileServiceClient::getData(GetResult& _return, const std::string& key)
+bool DatabaseServiceClient::hasData(const std::string& key)
 {
-  send_getData(key);
-  recv_getData(_return);
+  send_hasData(key);
+  return recv_hasData();
 }
 
-void ProfileServiceClient::send_getData(const std::string& key)
+void DatabaseServiceClient::send_hasData(const std::string& key)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getData", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("hasData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_getData_pargs args;
+  DatabaseService_hasData_pargs args;
   args.key = &key;
   args.write(oprot_);
 
@@ -605,7 +792,65 @@ void ProfileServiceClient::send_getData(const std::string& key)
   oprot_->getTransport()->flush();
 }
 
-void ProfileServiceClient::recv_getData(GetResult& _return)
+bool DatabaseServiceClient::recv_hasData()
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("hasData") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  bool _return;
+  DatabaseService_hasData_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    return _return;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "hasData failed: unknown result");
+}
+
+void DatabaseServiceClient::getData(GetResult& _return, const std::string& key)
+{
+  send_getData(key);
+  recv_getData(_return);
+}
+
+void DatabaseServiceClient::send_getData(const std::string& key)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getData", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  DatabaseService_getData_pargs args;
+  args.key = &key;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void DatabaseServiceClient::recv_getData(GetResult& _return)
 {
 
   int32_t rseqid = 0;
@@ -630,7 +875,7 @@ void ProfileServiceClient::recv_getData(GetResult& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  ProfileService_getData_presult result;
+  DatabaseService_getData_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -643,18 +888,18 @@ void ProfileServiceClient::recv_getData(GetResult& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getData failed: unknown result");
 }
 
-bool ProfileServiceClient::setData(const std::string& key, const std::string& value)
+bool DatabaseServiceClient::setData(const std::string& key, const std::string& value)
 {
   send_setData(key, value);
   return recv_setData();
 }
 
-void ProfileServiceClient::send_setData(const std::string& key, const std::string& value)
+void DatabaseServiceClient::send_setData(const std::string& key, const std::string& value)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("setData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_setData_pargs args;
+  DatabaseService_setData_pargs args;
   args.key = &key;
   args.value = &value;
   args.write(oprot_);
@@ -664,7 +909,7 @@ void ProfileServiceClient::send_setData(const std::string& key, const std::strin
   oprot_->getTransport()->flush();
 }
 
-bool ProfileServiceClient::recv_setData()
+bool DatabaseServiceClient::recv_setData()
 {
 
   int32_t rseqid = 0;
@@ -690,7 +935,7 @@ bool ProfileServiceClient::recv_setData()
     iprot_->getTransport()->readEnd();
   }
   bool _return;
-  ProfileService_setData_presult result;
+  DatabaseService_setData_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -702,18 +947,18 @@ bool ProfileServiceClient::recv_setData()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "setData failed: unknown result");
 }
 
-bool ProfileServiceClient::removeData(const std::string& key)
+bool DatabaseServiceClient::removeData(const std::string& key)
 {
   send_removeData(key);
   return recv_removeData();
 }
 
-void ProfileServiceClient::send_removeData(const std::string& key)
+void DatabaseServiceClient::send_removeData(const std::string& key)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("removeData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_removeData_pargs args;
+  DatabaseService_removeData_pargs args;
   args.key = &key;
   args.write(oprot_);
 
@@ -722,7 +967,7 @@ void ProfileServiceClient::send_removeData(const std::string& key)
   oprot_->getTransport()->flush();
 }
 
-bool ProfileServiceClient::recv_removeData()
+bool DatabaseServiceClient::recv_removeData()
 {
 
   int32_t rseqid = 0;
@@ -748,7 +993,7 @@ bool ProfileServiceClient::recv_removeData()
     iprot_->getTransport()->readEnd();
   }
   bool _return;
-  ProfileService_removeData_presult result;
+  DatabaseService_removeData_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -760,7 +1005,7 @@ bool ProfileServiceClient::recv_removeData()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "removeData failed: unknown result");
 }
 
-bool ProfileServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool DatabaseServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -779,34 +1024,88 @@ bool ProfileServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol
   return true;
 }
 
-void ProfileServiceProcessor::process_getData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void DatabaseServiceProcessor::process_hasData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ProfileService.getData", callContext);
+    ctx = this->eventHandler_->getContext("DatabaseService.hasData", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ProfileService.getData");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "DatabaseService.hasData");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ProfileService.getData");
+    this->eventHandler_->preRead(ctx, "DatabaseService.hasData");
   }
 
-  ProfileService_getData_args args;
+  DatabaseService_hasData_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ProfileService.getData", bytes);
+    this->eventHandler_->postRead(ctx, "DatabaseService.hasData", bytes);
   }
 
-  ProfileService_getData_result result;
+  DatabaseService_hasData_result result;
+  try {
+    result.success = iface_->hasData(args.key);
+    result.__isset.success = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "DatabaseService.hasData");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("hasData", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "DatabaseService.hasData");
+  }
+
+  oprot->writeMessageBegin("hasData", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "DatabaseService.hasData", bytes);
+  }
+}
+
+void DatabaseServiceProcessor::process_getData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("DatabaseService.getData", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "DatabaseService.getData");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "DatabaseService.getData");
+  }
+
+  DatabaseService_getData_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "DatabaseService.getData", bytes);
+  }
+
+  DatabaseService_getData_result result;
   try {
     iface_->getData(result.success, args.key);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ProfileService.getData");
+      this->eventHandler_->handlerError(ctx, "DatabaseService.getData");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -819,7 +1118,7 @@ void ProfileServiceProcessor::process_getData(int32_t seqid, ::apache::thrift::p
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ProfileService.getData");
+    this->eventHandler_->preWrite(ctx, "DatabaseService.getData");
   }
 
   oprot->writeMessageBegin("getData", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -829,38 +1128,38 @@ void ProfileServiceProcessor::process_getData(int32_t seqid, ::apache::thrift::p
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ProfileService.getData", bytes);
+    this->eventHandler_->postWrite(ctx, "DatabaseService.getData", bytes);
   }
 }
 
-void ProfileServiceProcessor::process_setData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void DatabaseServiceProcessor::process_setData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ProfileService.setData", callContext);
+    ctx = this->eventHandler_->getContext("DatabaseService.setData", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ProfileService.setData");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "DatabaseService.setData");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ProfileService.setData");
+    this->eventHandler_->preRead(ctx, "DatabaseService.setData");
   }
 
-  ProfileService_setData_args args;
+  DatabaseService_setData_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ProfileService.setData", bytes);
+    this->eventHandler_->postRead(ctx, "DatabaseService.setData", bytes);
   }
 
-  ProfileService_setData_result result;
+  DatabaseService_setData_result result;
   try {
     result.success = iface_->setData(args.key, args.value);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ProfileService.setData");
+      this->eventHandler_->handlerError(ctx, "DatabaseService.setData");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -873,7 +1172,7 @@ void ProfileServiceProcessor::process_setData(int32_t seqid, ::apache::thrift::p
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ProfileService.setData");
+    this->eventHandler_->preWrite(ctx, "DatabaseService.setData");
   }
 
   oprot->writeMessageBegin("setData", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -883,38 +1182,38 @@ void ProfileServiceProcessor::process_setData(int32_t seqid, ::apache::thrift::p
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ProfileService.setData", bytes);
+    this->eventHandler_->postWrite(ctx, "DatabaseService.setData", bytes);
   }
 }
 
-void ProfileServiceProcessor::process_removeData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void DatabaseServiceProcessor::process_removeData(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ProfileService.removeData", callContext);
+    ctx = this->eventHandler_->getContext("DatabaseService.removeData", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ProfileService.removeData");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "DatabaseService.removeData");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ProfileService.removeData");
+    this->eventHandler_->preRead(ctx, "DatabaseService.removeData");
   }
 
-  ProfileService_removeData_args args;
+  DatabaseService_removeData_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ProfileService.removeData", bytes);
+    this->eventHandler_->postRead(ctx, "DatabaseService.removeData", bytes);
   }
 
-  ProfileService_removeData_result result;
+  DatabaseService_removeData_result result;
   try {
     result.success = iface_->removeData(args.key);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ProfileService.removeData");
+      this->eventHandler_->handlerError(ctx, "DatabaseService.removeData");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -927,7 +1226,7 @@ void ProfileServiceProcessor::process_removeData(int32_t seqid, ::apache::thrift
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ProfileService.removeData");
+    this->eventHandler_->preWrite(ctx, "DatabaseService.removeData");
   }
 
   oprot->writeMessageBegin("removeData", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -937,30 +1236,30 @@ void ProfileServiceProcessor::process_removeData(int32_t seqid, ::apache::thrift
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ProfileService.removeData", bytes);
+    this->eventHandler_->postWrite(ctx, "DatabaseService.removeData", bytes);
   }
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > ProfileServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< ProfileServiceIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< ProfileServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new ProfileServiceProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > DatabaseServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< DatabaseServiceIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< DatabaseServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new DatabaseServiceProcessor(handler));
   return processor;
 }
 
-void ProfileServiceConcurrentClient::getData(GetResult& _return, const std::string& key)
+bool DatabaseServiceConcurrentClient::hasData(const std::string& key)
 {
-  int32_t seqid = send_getData(key);
-  recv_getData(_return, seqid);
+  int32_t seqid = send_hasData(key);
+  return recv_hasData(seqid);
 }
 
-int32_t ProfileServiceConcurrentClient::send_getData(const std::string& key)
+int32_t DatabaseServiceConcurrentClient::send_hasData(const std::string& key)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getData", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("hasData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_getData_pargs args;
+  DatabaseService_hasData_pargs args;
   args.key = &key;
   args.write(oprot_);
 
@@ -972,7 +1271,91 @@ int32_t ProfileServiceConcurrentClient::send_getData(const std::string& key)
   return cseqid;
 }
 
-void ProfileServiceConcurrentClient::recv_getData(GetResult& _return, const int32_t seqid)
+bool DatabaseServiceConcurrentClient::recv_hasData(const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("hasData") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      bool _return;
+      DatabaseService_hasData_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        sentry.commit();
+        return _return;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "hasData failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void DatabaseServiceConcurrentClient::getData(GetResult& _return, const std::string& key)
+{
+  int32_t seqid = send_getData(key);
+  recv_getData(_return, seqid);
+}
+
+int32_t DatabaseServiceConcurrentClient::send_getData(const std::string& key)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("getData", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  DatabaseService_getData_pargs args;
+  args.key = &key;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void DatabaseServiceConcurrentClient::recv_getData(GetResult& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1010,7 +1393,7 @@ void ProfileServiceConcurrentClient::recv_getData(GetResult& _return, const int3
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      ProfileService_getData_presult result;
+      DatabaseService_getData_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1032,19 +1415,19 @@ void ProfileServiceConcurrentClient::recv_getData(GetResult& _return, const int3
   } // end while(true)
 }
 
-bool ProfileServiceConcurrentClient::setData(const std::string& key, const std::string& value)
+bool DatabaseServiceConcurrentClient::setData(const std::string& key, const std::string& value)
 {
   int32_t seqid = send_setData(key, value);
   return recv_setData(seqid);
 }
 
-int32_t ProfileServiceConcurrentClient::send_setData(const std::string& key, const std::string& value)
+int32_t DatabaseServiceConcurrentClient::send_setData(const std::string& key, const std::string& value)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("setData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_setData_pargs args;
+  DatabaseService_setData_pargs args;
   args.key = &key;
   args.value = &value;
   args.write(oprot_);
@@ -1057,7 +1440,7 @@ int32_t ProfileServiceConcurrentClient::send_setData(const std::string& key, con
   return cseqid;
 }
 
-bool ProfileServiceConcurrentClient::recv_setData(const int32_t seqid)
+bool DatabaseServiceConcurrentClient::recv_setData(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1096,7 +1479,7 @@ bool ProfileServiceConcurrentClient::recv_setData(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       bool _return;
-      ProfileService_setData_presult result;
+      DatabaseService_setData_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1117,19 +1500,19 @@ bool ProfileServiceConcurrentClient::recv_setData(const int32_t seqid)
   } // end while(true)
 }
 
-bool ProfileServiceConcurrentClient::removeData(const std::string& key)
+bool DatabaseServiceConcurrentClient::removeData(const std::string& key)
 {
   int32_t seqid = send_removeData(key);
   return recv_removeData(seqid);
 }
 
-int32_t ProfileServiceConcurrentClient::send_removeData(const std::string& key)
+int32_t DatabaseServiceConcurrentClient::send_removeData(const std::string& key)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("removeData", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ProfileService_removeData_pargs args;
+  DatabaseService_removeData_pargs args;
   args.key = &key;
   args.write(oprot_);
 
@@ -1141,7 +1524,7 @@ int32_t ProfileServiceConcurrentClient::send_removeData(const std::string& key)
   return cseqid;
 }
 
-bool ProfileServiceConcurrentClient::recv_removeData(const int32_t seqid)
+bool DatabaseServiceConcurrentClient::recv_removeData(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1180,7 +1563,7 @@ bool ProfileServiceConcurrentClient::recv_removeData(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       bool _return;
-      ProfileService_removeData_presult result;
+      DatabaseService_removeData_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();

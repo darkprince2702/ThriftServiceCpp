@@ -5,6 +5,7 @@
 #include "Cache.h"
 #include "Memcached.h"
 
+using namespace profileservice;
 
 Cache *Cache::getCache(std::string cacheType) {
     if (cacheType == "Memcached") {

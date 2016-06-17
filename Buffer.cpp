@@ -5,6 +5,8 @@
 #include "Buffer.h"
 #include "HashMap.h"
 
+using namespace profileservice;
+
 Buffer *Buffer::getBuffer(std::string bufferType) {
     if (bufferType == "HashMap") {
         return HashMap::getInstance();

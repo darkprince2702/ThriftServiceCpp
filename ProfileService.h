@@ -9,9 +9,9 @@
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
-#include "ProfileServiceTypes.h"
+#include "profileservice_types.h"
 
-
+namespace profileservice {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -550,6 +550,6 @@ class ProfileServiceConcurrentClient : virtual public ProfileServiceIf {
   #pragma warning( pop )
 #endif
 
-
+} // namespace
 
 #endif

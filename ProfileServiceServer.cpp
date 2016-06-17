@@ -20,40 +20,39 @@ using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
-
+using namespace profileservice;
 //static long t1;
 //static long t2;
 //static long t3;
 
 class ProfileServiceHandler : virtual public ProfileServiceIf {
 private:
-    Database *database;
-    Cache *cache;
-    Buffer *buffer;
+    boost::shared_ptr<Database> database;
+    boost::shared_ptr<Cache> cache;
+    boost::shared_ptr<Buffer> buffer;
 public:
-    ProfileServiceHandler() {
-        database = Database::getDatabase("LevelDB");
-        cache = Cache::getCache("Memcached");
-        buffer = Buffer::getBuffer("HashMap");
+
+    ProfileServiceHandler() : database(Database::getInstance()),
+    cache(Cache::getCache("Memcached")), buffer(Buffer::getBuffer("HashMap")) {
     }
 
     void getData(GetResult &_return, const std::string &key) {
         std::string result;
-        
+
         GetResult bufferResult, cacheResult, dbResult;
         bufferResult = buffer->getData(key);
-        if (bufferResult.isNull) {    // Not exist in buffer
+        if (bufferResult.isNull) { // Not exist in buffer
             cacheResult = cache->getData(key);
-            if (cacheResult.isNull) {    // Not exist in cache
+            if (cacheResult.isNull) { // Not exist in cache
                 dbResult = database->getData(key);
-                if (!dbResult.isNull) {    // Hit in database, then put result to cache and buffer
+                if (!dbResult.isNull) { // Hit in database, then put result to cache and buffer
                     cache->setData(key, result);
                     buffer->setData(key, result);
                 }
                 _return = dbResult;
-            }
-            else {
-                buffer->setData(key, result);   // Hit in cache, then put result to buffer
+            } else {
+
+                buffer->setData(key, result); // Hit in cache, then put result to buffer
             }
 
             _return = cacheResult;
@@ -70,24 +69,24 @@ public:
         return r1 && r2 && r3;
     }
 
-//    bool setData(const std::string &key, const std::string &value) {
-//        auto start = std::chrono::steady_clock::now();
-//        bool r1 = database->setData(key, value);
-//        t1 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
-//
-//        start = std::chrono::steady_clock::now();
-//        bool r2 = cache->setData(key, value);
-//        t2 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
-//
-//        start = std::chrono::steady_clock::now();
-//        bool r3 = buffer->setData(key, value);
-//        t2 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
-//
-//        if (key == "ID100000") {
-//            std::cout << "Database access time: " << t1/1000000 << std::endl << "Cache access time: " << t2/1000000 << std::endl << "Buffer access time: " << t3/1000000 << std::endl;
-//        }
-//        return true;
-//    }
+    //    bool setData(const std::string &key, const std::string &value) {
+    //        auto start = std::chrono::steady_clock::now();
+    //        bool r1 = database->setData(key, value);
+    //        t1 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
+    //
+    //        start = std::chrono::steady_clock::now();
+    //        bool r2 = cache->setData(key, value);
+    //        t2 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
+    //
+    //        start = std::chrono::steady_clock::now();
+    //        bool r3 = buffer->setData(key, value);
+    //        t2 += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
+    //
+    //        if (key == "ID100000") {
+    //            std::cout << "Database access time: " << t1/1000000 << std::endl << "Cache access time: " << t2/1000000 << std::endl << "Buffer access time: " << t3/1000000 << std::endl;
+    //        }
+    //        return true;
+    //    }
 
     bool removeData(const std::string &key) {
         // Delete key in cache and database
@@ -119,7 +118,7 @@ int main(int argc, char **argv) {
 
     // TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
 
-//     TThreadPoolServer server(processor, serverTransport, transportFactory, protocolFactory, threadManager);
+    //     TThreadPoolServer server(processor, serverTransport, transportFactory, protocolFactory, threadManager);
 
     TNonblockingServer server(processor, protocolFactory, port, threadManager);
     // server.setNumIOThreads(io_threads);
