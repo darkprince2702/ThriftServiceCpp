@@ -40,12 +40,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/Database.o \
 	${OBJECTDIR}/DatabaseModel.o \
 	${OBJECTDIR}/DatabaseService.o \
+	${OBJECTDIR}/DumpFile.o \
+	${OBJECTDIR}/File.o \
 	${OBJECTDIR}/HashMap.o \
 	${OBJECTDIR}/HashMapModel.o \
+	${OBJECTDIR}/LogFile.o \
 	${OBJECTDIR}/Memcached.o \
 	${OBJECTDIR}/MemcachedModel.o \
 	${OBJECTDIR}/ProfileService.o \
 	${OBJECTDIR}/ProfileServiceServer.o \
+	${OBJECTDIR}/SaveFile.o \
+	${OBJECTDIR}/Timer.o \
 	${OBJECTDIR}/databaseservice_constants.o \
 	${OBJECTDIR}/databaseservice_types.o \
 	${OBJECTDIR}/profileservice_constants.o \
@@ -66,7 +71,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-static -lthrift -lthriftnb -levent -lpthread -lmemcached -lleveldb
+LDLIBSOPTIONS=-lthrift -lthriftnb -levent -lpthread -lmemcached -lleveldb -lboost_thread -lboost_system -Wl, -static
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -101,6 +106,16 @@ ${OBJECTDIR}/DatabaseService.o: DatabaseService.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DatabaseService.o DatabaseService.cpp
 
+${OBJECTDIR}/DumpFile.o: DumpFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DumpFile.o DumpFile.cpp
+
+${OBJECTDIR}/File.o: File.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/File.o File.cpp
+
 ${OBJECTDIR}/HashMap.o: HashMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -110,6 +125,11 @@ ${OBJECTDIR}/HashMapModel.o: HashMapModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/HashMapModel.o HashMapModel.cpp
+
+${OBJECTDIR}/LogFile.o: LogFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LogFile.o LogFile.cpp
 
 ${OBJECTDIR}/Memcached.o: Memcached.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -130,6 +150,16 @@ ${OBJECTDIR}/ProfileServiceServer.o: ProfileServiceServer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ProfileServiceServer.o ProfileServiceServer.cpp
+
+${OBJECTDIR}/SaveFile.o: SaveFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SaveFile.o SaveFile.cpp
+
+${OBJECTDIR}/Timer.o: Timer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Timer.o Timer.cpp
 
 ${OBJECTDIR}/databaseservice_constants.o: databaseservice_constants.cpp 
 	${MKDIR} -p ${OBJECTDIR}

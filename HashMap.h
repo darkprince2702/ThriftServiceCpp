@@ -15,7 +15,6 @@ namespace profileservice {
     private:
         HashMapModel *hashMapModel;
         HashMap();
-
     public:
         static HashMap *getInstance();
         GetResult getData(std::string key);

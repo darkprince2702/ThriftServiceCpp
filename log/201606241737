@@ -1,0 +1,6 @@
+setData(ID1,John)
+removeData(ID1)
+setData(ID1,John)
+removeData(ID1)
+setData(ID1,John)
+removeData(ID1)

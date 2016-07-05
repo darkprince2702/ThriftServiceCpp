@@ -21,7 +21,7 @@ client(protocol) {
 
 DatabaseModel* DatabaseModel::getInstance() {
     static std::mutex mutex;
-    static DatabaseModel* instance;
+    static DatabaseModel* instance = NULL;
     if (instance == NULL) {
         std::lock_guard<std::mutex> guard(mutex);
         if (instance == NULL) {

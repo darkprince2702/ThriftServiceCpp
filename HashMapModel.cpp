@@ -15,6 +15,10 @@ HashMapModel *HashMapModel::getInstance() {
     return &instance;
 }
 
+std::unordered_map<std::string, std::string>* HashMapModel::getUnorderMap() {
+    return &(HashMapModel::getInstance()->hashMap);
+}
+
 GetResult HashMapModel::getData(std::string key) {
     GetResult return_;
     std::lock_guard<std::mutex> guard(mutex);

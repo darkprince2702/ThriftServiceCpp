@@ -21,6 +21,8 @@ namespace profileservice {
 
 class GetResult;
 
+class Profile;
+
 typedef struct _GetResult__isset {
   _GetResult__isset() : value(false) {}
   bool value :1;
@@ -69,6 +71,51 @@ class GetResult {
 void swap(GetResult &a, GetResult &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetResult& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class Profile {
+ public:
+
+  Profile(const Profile&);
+  Profile& operator=(const Profile&);
+  Profile() : id(), name() {
+  }
+
+  virtual ~Profile() throw();
+  std::string id;
+  std::string name;
+
+  void __set_id(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  bool operator == (const Profile & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    return true;
+  }
+  bool operator != (const Profile &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Profile & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Profile &a, Profile &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Profile& obj)
 {
   obj.printTo(out);
   return out;

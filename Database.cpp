@@ -11,7 +11,7 @@ Database::Database() : dbModel(DatabaseModel::getInstance()) {
 
 Database* Database::getInstance() {
     static std::mutex mutex;
-    static Database* instance;
+    static Database* instance = NULL;
     if (instance == NULL) {
         std::lock_guard<std::mutex> guard(mutex);
         if (instance == NULL) {

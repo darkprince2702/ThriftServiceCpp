@@ -5,10 +5,15 @@
 #include "Buffer.h"
 #include "Cache.h"
 #include "Database.h"
+#include "DumpFile.h"
+#include "LogFile.h"
+#include "SaveFile.h"
+#include "Timer.h"
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/server/TSimpleServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TBufferTransports.h>
+#include <thrift/transport/TSimpleFileTransport.h>
 #include <thrift/server/TThreadPoolServer.h>
 #include <thrift/server/TNonblockingServer.h>
 #include <thrift/concurrency/ThreadManager.h>
@@ -30,15 +35,28 @@ private:
     boost::shared_ptr<Database> database;
     boost::shared_ptr<Cache> cache;
     boost::shared_ptr<Buffer> buffer;
+    boost::shared_ptr<SaveFile> saveFile;
+    boost::shared_ptr<DumpFile> dumpFile;
+    boost::shared_ptr<LogFile> logFile;
+    boost::shared_ptr<Timer> timer;
 public:
 
-    ProfileServiceHandler() : database(Database::getInstance()),
-    cache(Cache::getCache("Memcached")), buffer(Buffer::getBuffer("HashMap")) {
+    ProfileServiceHandler() {
+        // Initialize variable
+        database.reset(Database::getInstance());
+        cache.reset(Cache::getCache("Memcached"));
+        buffer.reset(Buffer::getBuffer("HashMap"));
+        saveFile.reset(SaveFile::getInstance());
+        dumpFile.reset(DumpFile::getInstance());
+        logFile.reset(LogFile::getInstance());
+        timer.reset(Timer::getInstance());
+        // Load data from dump file and log file
+        dumpFile->load();
+        logFile->load();
+//        timer->run();
     }
 
     void getData(GetResult &_return, const std::string &key) {
-        std::string result;
-
         GetResult bufferResult, cacheResult, dbResult;
         bufferResult = buffer->getData(key);
         if (bufferResult.isNull) { // Not exist in buffer
@@ -46,25 +64,28 @@ public:
             if (cacheResult.isNull) { // Not exist in cache
                 dbResult = database->getData(key);
                 if (!dbResult.isNull) { // Hit in database, then put result to cache and buffer
-                    cache->setData(key, result);
-                    buffer->setData(key, result);
+                    cache->setData(key, dbResult.value);
+                    buffer->setData(key, dbResult.value);
                 }
                 _return = dbResult;
             } else {
 
-                buffer->setData(key, result); // Hit in cache, then put result to buffer
+                buffer->setData(key, cacheResult.value); // Hit in cache, then put result to buffer
+                _return = cacheResult;
             }
-
-            _return = cacheResult;
+        } else {
+            _return = bufferResult;
         }
-
-        _return = bufferResult;
     }
 
     bool setData(const std::string &key, const std::string &value) {
         bool r1 = database->setData(key, value);
         bool r2 = cache->setData(key, value);
         bool r3 = buffer->setData(key, value);
+
+        if (r3) {
+            logFile->addLog("setData(" + key + "," + value + ")");
+        }
 
         return r1 && r2 && r3;
     }
@@ -93,6 +114,10 @@ public:
         bool r1 = database->removeData(key);
         bool r2 = cache->removeData(key);
         bool r3 = buffer->removeData(key);
+
+        if (r3) {
+            logFile->addLog("removeData(" + key + ")");
+        }
 
         return r1 && r2 && r3;
     }

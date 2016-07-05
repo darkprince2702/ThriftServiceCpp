@@ -20,6 +20,7 @@ namespace profileservice {
         std::mutex mutex;
     public:
         static HashMapModel *getInstance();
+        static std::unordered_map<std::string, std::string>* getUnorderMap();
         GetResult getData(std::string key);
         bool setData(std::string key, std::string value);
         bool removeData(std::string key);
